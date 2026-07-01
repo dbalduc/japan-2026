@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Sage's Haul">
+<meta name="theme-color" content="#FF5C8A">
+<title>Sage's Tokyo Haul ♡</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Mochiy+Pop+One&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#3A2E4D;
+    --paper:#FFF6FA;
+    --pink:#FF5C8A;
+    --pink-soft:#FFD7E6;
+    --yellow:#FFD500;
+    --mint:#3FBFB4;
+    --lav:#8E7CF0;
+    --sky:#7CC7C;
+    --line:#F2D9E4;
+    --tag:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  body{
+    color:var(--ink);
+    font-family:"Zen Kaku Gothic New",system-ui,sans-serif;
+    line-height:1.5;padding-bottom:70px;
+    background-color:var(--paper);
+    background-image:radial-gradient(rgba(255,92,138,.10) 2px, transparent 2px);
+    background-size:20px 20px;
+  }
+  .wrap{max-width:780px;margin:0 auto;padding:0 16px}
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:relative;overflow:hidden;color:#fff;
+    padding:30px 0 26px;border-bottom:5px solid var(--ink);
+    background:linear-gradient(135deg,#FF7AA8 0%,#FF5C8A 45%,#A07CF0 100%);
+  }
+  header .wrap{position:relative;z-index:3;display:flex;align-items:center;gap:14px}
+  .mascot{flex:none;width:78px;height:84px;filter:drop-shadow(2px 3px 0 rgba(58,46,77,.35))}
+  h1{font-family:"Mochiy Pop One",system-ui;font-weight:400;font-size:1.9rem;line-height:1.08;
+     text-shadow:2px 2px 0 rgba(58,46,77,.35)}
+  h1 .jp{display:block;font-family:"M PLUS Rounded 1c";font-size:.92rem;font-weight:700;opacity:.95;margin-top:5px;text-shadow:none}
+  .kicker{font-family:"M PLUS Rounded 1c";font-weight:800;letter-spacing:.14em;font-size:.66rem;text-transform:uppercase;opacity:.95}
+  .sub{font-size:.86rem;opacity:.97;margin-top:9px}
+  /* floating deco */
+  .deco{position:absolute;z-index:1;pointer-events:none;opacity:.9;font-size:1.3rem;animation:float 5s ease-in-out infinite}
+  .deco.d1{top:14px;right:18px;font-size:1.5rem}
+  .deco.d2{top:60px;right:60px;animation-delay:1.2s}
+  .deco.d3{bottom:14px;right:30px;animation-delay:.6s;font-size:1.1rem}
+  .deco.d4{top:40px;right:120px;animation-delay:1.8s;font-size:.95rem}
+  @keyframes float{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-8px) rotate(6deg)}}
+
+  /* ---------- PROGRESS ---------- */
+  .progress{
+    position:sticky;top:0;z-index:40;color:var(--ink);
+    background:linear-gradient(90deg,#FFE7F0,#FFF3C4);
+    border-bottom:3px solid var(--ink);
+    display:flex;align-items:center;gap:12px;padding:9px 16px;
+  }
+  .progress .lbl{font-family:"M PLUS Rounded 1c";font-weight:800;font-size:.82rem;white-space:nowrap;display:flex;align-items:center;gap:5px}
+  .bar{flex:1;height:14px;background:#fff;border:2.5px solid var(--ink);border-radius:99px;overflow:hidden;position:relative}
+  .bar > i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--pink),var(--lav));transition:width .4s cubic-bezier(.3,1.4,.5,1)}
+  .count{font-family:"Mochiy Pop One";font-size:1rem;color:var(--pink);white-space:nowrap}
+  .resetBtn{margin-left:2px;background:#fff;border:2px solid var(--ink);color:var(--ink);
+    font-family:"M PLUS Rounded 1c";font-weight:800;font-size:.68rem;padding:5px 10px;border-radius:99px;cursor:pointer;box-shadow:2px 2px 0 var(--ink)}
+  .resetBtn:active{transform:translate(1px,1px);box-shadow:1px 1px 0 var(--ink)}
+
+  /* ---------- SECTIONS ---------- */
+  section{margin-top:30px}
+  .sec-head{display:inline-flex;align-items:center;gap:9px;background:#fff;border:2.5px solid var(--ink);
+    border-radius:99px;padding:7px 16px 7px 12px;box-shadow:3px 3px 0 var(--ink);margin-bottom:16px}
+  .sec-head .em{font-size:1.15rem}
+  .sec-head .n{font-family:"Mochiy Pop One";font-size:1rem}
+  .sec-head .jp{font-size:.74rem;color:#9a7fae;font-weight:700;font-family:"M PLUS Rounded 1c"}
+
+  /* ---------- SPOTS ---------- */
+  .spots{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:11px}
+  .spot{background:#fff;border:2.5px solid var(--ink);border-radius:16px;padding:12px 13px;box-shadow:3px 3px 0 var(--ink);position:relative}
+  .spot::before{content:"🛍️";position:absolute;top:-11px;right:-6px;font-size:1.15rem;transform:rotate(12deg)}
+  .spot .nm{font-family:"M PLUS Rounded 1c";font-weight:800;font-size:.98rem}
+  .spot .ds{font-size:.76rem;color:#8a7d92;margin-top:3px}
+
+  /* ---------- PRODUCT CARDS ---------- */
+  .grid{display:grid;gap:12px}
+  .tag{
+    position:relative;display:flex;gap:12px;align-items:center;
+    background:var(--tag);border:2.5px solid var(--ink);border-radius:18px;
+    padding:12px 14px 12px 12px;cursor:pointer;box-shadow:3px 3px 0 var(--chip,var(--ink));
+    transition:transform .1s ease, box-shadow .1s ease, background .2s;
+  }
+  .tag:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--chip,var(--ink))}
+  .tag .body{flex:1;min-width:0}
+  .tag .en{font-family:"M PLUS Rounded 1c";font-weight:800;font-size:1rem;line-height:1.2}
+  .tag .jp{font-size:1.02rem;color:var(--pink);font-weight:700;margin-top:2px;word-break:break-word}
+  .tag .ds{font-size:.79rem;color:#7d7288;margin-top:5px}
+  .meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+  .chip{font-size:.68rem;font-weight:800;padding:3px 9px;border-radius:99px;font-family:"M PLUS Rounded 1c";border:1.5px solid var(--ink)}
+  .chip.where{background:#FFF3C4;color:#7a5b00}
+  .chip.price{background:#DFF6F3;color:#0c6a63}
+  .chip.warn{background:#FFE0EA;color:#c01055}
+
+  /* ---------- MANEKI-NEKO CHECKBOX ---------- */
+  .neko{flex:none;width:52px;height:56px;overflow:visible;
+    filter:grayscale(1) opacity(.45);transition:filter .25s ease}
+  .neko .paw{transform-box:fill-box;transform-origin:50% 92%}
+  .tag.done .neko{filter:none;animation:pop .35s cubic-bezier(.3,1.5,.5,1)}
+  .tag.done .neko .paw{animation:wave 1s ease-in-out infinite}
+  @keyframes wave{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(22deg)}}
+  @keyframes pop{0%{transform:scale(.6)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+
+  /* done card look + GET sticker */
+  .tag.done{background:#FFF2F7;border-style:dashed}
+  .tag.done .en{text-decoration:line-through;text-decoration-thickness:2px;color:#b79ec3}
+  .tag.done .jp{color:#d3a9c2}
+  .tag.done .chip{opacity:.5}
+  .sticker{position:absolute;right:8px;top:8px;z-index:2;
+    font-family:"Mochiy Pop One";font-size:.72rem;color:#fff;background:var(--pink);
+    border:2px solid var(--ink);border-radius:12px;padding:3px 8px;transform:rotate(9deg) scale(0);
+    box-shadow:2px 2px 0 var(--ink);transition:transform .25s cubic-bezier(.3,1.6,.5,1);pointer-events:none}
+  .tag.done .sticker{transform:rotate(9deg) scale(1)}
+
+  /* ---------- MISC ---------- */
+  .note{font-size:.82rem;color:#8a7d92;margin-top:16px;padding:12px 14px;background:#fff;
+    border:2px dashed var(--pink-soft);border-radius:14px}
+  .celebrate{text-align:center;font-family:"Mochiy Pop One";color:var(--pink);font-size:1.05rem;
+    min-height:1.3em;margin:16px 0 4px}
+  footer{margin-top:26px;text-align:center;font-size:.76rem;color:#b3a6bd;font-family:"M PLUS Rounded 1c";font-weight:700}
+  footer .hearts{font-size:1rem;letter-spacing:3px}
+  @media (max-width:480px){
+    h1{font-size:1.55rem}
+    .spots{grid-template-columns:1fr 1fr}
+    .mascot{width:64px;height:70px}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <span class="deco d1">✨</span><span class="deco d2">🌸</span><span class="deco d3">🎀</span><span class="deco d4">⭐️</span>
+  <div class="wrap">
+    <!-- mascot maneki-neko (always awake) -->
+    <svg class="mascot" viewBox="0 0 60 66" aria-hidden="true">
+      <g class="paw" style="animation:wave 1.1s ease-in-out infinite;transform-box:fill-box;transform-origin:50% 92%">
+        <ellipse cx="11" cy="19" rx="6.5" ry="7.5" fill="#fff" stroke="#3A2E4D" stroke-width="2.4"/>
+      </g>
+      <ellipse cx="30" cy="52" rx="15" ry="9" fill="#FFD54A" stroke="#3A2E4D" stroke-width="2.4"/>
+      <ellipse cx="30" cy="52" rx="8.5" ry="4.2" fill="none" stroke="#E0A43B" stroke-width="1.6"/>
+      <path d="M13 56 C10 33 20 29 30 29 C40 29 50 33 47 56 Z" fill="#fff" stroke="#3A2E4D" stroke-width="2.4"/>
+      <ellipse cx="20" cy="53" rx="5" ry="4" fill="#fff" stroke="#3A2E4D" stroke-width="2.2"/>
+      <circle cx="30" cy="21" r="16" fill="#fff" stroke="#3A2E4D" stroke-width="2.4"/>
+      <path d="M16 10 L13 0 L26 7 Z" fill="#fff" stroke="#3A2E4D" stroke-width="2.2" stroke-linejoin="round"/>
+      <path d="M44 10 L47 0 L34 7 Z" fill="#fff" stroke="#3A2E4D" stroke-width="2.2" stroke-linejoin="round"/>
+      <path d="M18.5 8 L16.5 3.5 L23 6 Z" fill="#FFB6CE"/>
+      <path d="M41.5 8 L43.5 3.5 L37 6 Z" fill="#FFB6CE"/>
+      <circle cx="21" cy="25.5" r="3.2" fill="#FF9DBB"/>
+      <circle cx="39" cy="25.5" r="3.2" fill="#FF9DBB"/>
+      <circle cx="24" cy="20" r="2.4" fill="#3A2E4D"/>
+      <circle cx="36" cy="20" r="2.4" fill="#3A2E4D"/>
+      <circle cx="24.9" cy="19.2" r=".8" fill="#fff"/><circle cx="36.9" cy="19.2" r=".8" fill="#fff"/>
+      <ellipse cx="30" cy="23.4" rx="1.5" ry="1" fill="#FF7FA3"/>
+      <path d="M30 24.3 Q27.5 26.8 25.5 25.2 M30 24.3 Q32.5 26.8 34.5 25.2" fill="none" stroke="#3A2E4D" stroke-width="1.4" stroke-linecap="round"/>
+      <g stroke="#3A2E4D" stroke-width="1.2" stroke-linecap="round"><path d="M13 20 L21 21"/><path d="M13 24 L21 23.5"/><path d="M47 20 L39 21"/><path d="M47 24 L39 23.5"/></g>
+      <path d="M20 33 Q30 39 40 33" fill="none" stroke="#E23B4E" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="30" cy="37" r="4" fill="#FFD54A" stroke="#3A2E4D" stroke-width="1.8"/>
+    </svg>
+    <div>
+      <div class="kicker">Tokyo · July 2026 · drugstore treasure hunt</div>
+      <h1>Sage's Haul<span class="jp">セージの東京お買い物リスト ♡</span></h1>
+    </div>
+  </div>
+  <div class="wrap"><p class="sub">Tap a lucky cat to collect it 🐾 — it wakes up and waves! Show the pink Japanese name on the shelf. Saves on this phone.</p></div>
+</header>
+
+<div class="progress">
+  <span class="lbl">🐾 <span id="pcap">Lucky cats</span></span>
+  <span class="bar"><i id="barfill"></i></span>
+  <span class="count"><span id="cnt">0</span>/<span id="total">0</span></span>
+  <button class="resetBtn" id="resetBtn">reset</button>
+</div>
+
+<div class="wrap">
+
+  <section>
+    <div class="sec-head"><span class="em">🏬</span><span class="n">Where to go</span><span class="jp">お店</span></div>
+    <div class="spots">
+      <div class="spot"><div class="nm">Brandy Melville</div><div class="ds">3-floor flagship, Cat St / Harajuku</div></div>
+      <div class="spot"><div class="nm">Kiddy Land</div><div class="ds">Harajuku · Sanrio, Ghibli, Smiski, plush</div></div>
+      <div class="spot"><div class="nm">Smiski Store</div><div class="ds">Blind-box figures (also at Kiddy Land)</div></div>
+      <div class="spot"><div class="nm">Don Quijote</div><div class="ds">"Donki" · open late · beauty + snacks wall</div></div>
+      <div class="spot"><div class="nm">Matsumoto Kiyoshi</div><div class="ds">Drugstore · most skincare below</div></div>
+      <div class="spot"><div class="nm">Loft / PLAZA</div><div class="ds">K-beauty, tools, cute extras</div></div>
+    </div>
+  </section>
+
+  <section><div class="sec-head"><span class="em">💧</span><span class="n">Skincare</span><span class="jp">スキンケア</span></div><div class="grid" data-cat></div></section>
+  <section><div class="sec-head"><span class="em">🧖‍♀️</span><span class="n">Masks &amp; relax</span><span class="jp">マスク</span></div><div class="grid" data-cat></div></section>
+  <section><div class="sec-head"><span class="em">💄</span><span class="n">Makeup &amp; lips</span><span class="jp">メイク</span></div><div class="grid" data-cat></div></section>
+  <section><div class="sec-head"><span class="em">🎀</span><span class="n">Body &amp; hair</span><span class="jp">ボディ・ヘア</span></div><div class="grid" data-cat></div></section>
+  <section><div class="sec-head"><span class="em">🩹</span><span class="n">Health, feet &amp; oral</span><span class="jp">ヘルスケア</span></div><div class="grid" data-cat></div></section>
+
+  <div class="celebrate" id="celebrate"></div>
+  <p class="note">💖 Tags marked <b>❓ confirm</b> are names I couldn't match to one exact product — double-check the box/photo before buying, or show staff the romaji.</p>
+  <footer>made for sage <span class="hearts">♡₊˚</span> tap to collect · 日本語 names for shelf-matching</footer>
+</div>
+
+<script>
+const PINK="#FF5C8A",MINT="#3FBFB4",LAV="#8E7CF0",YEL="#E8B800";
+const items=[
+  {c:0,en:"Senka Perfect Whip",jp:"専科 パーフェクトホイップ",ds:"Cult foaming face wash, dense whip.",where:"Drugstore / Donki",price:"~¥500",chip:MINT},
+  {c:0,en:"Keana Nadeshiko Rice Mask",jp:"毛穴撫子 お米のマスク",ds:"Rice sheet mask for pores + hydration. (Your 'rice pack'.)",where:"Drugstore / Donki",price:"~¥700/10",chip:MINT},
+  {c:0,en:"Anua Heartleaf 77 Toner",jp:"アヌア ドクダミ77 トナー",ds:"Korean soothing toner. ('Anua 100+' — confirm if you meant toner, pad, or cleanser.)",where:"Loft / PLAZA / Donki",price:"~¥2,000",chip:MINT,warn:1},
+  {c:0,en:"Anua (item 2)",jp:"アヌア",ds:"'ahua 15+' — couldn't pin the exact Anua SKU. Confirm which one.",where:"Loft / PLAZA",price:"—",chip:MINT,warn:1},
+  {c:0,en:"Bioré UV Aqua Rich Mist",jp:"ビオレUV アクアプロテクトミスト",ds:"Spray sunscreen SPF50+, refreshing.",where:"Drugstore / Donki",price:"~¥900",chip:MINT},
+  {c:0,en:"Sana W Care Eye Cream",jp:"サナ アイクリーム",ds:"Eye cream. (Confirm exact Sana line — Nameraka Honpo?)",where:"Drugstore",price:"~¥900",chip:MINT,warn:1},
+  {c:1,en:"MegRhythm Steam Eye Mask",jp:"めぐりズム 蒸気でホットアイマスク",ds:"Self-warming eye masks. Lavender is the best scent.",where:"Drugstore / conbini",price:"~¥1,100/12",chip:LAV},
+  {c:1,en:"Heated lavender mask",jp:"ラベンダー (ホットマスク)",ds:"Likely the MegRhythm Lavender above — grab that scent.",where:"Drugstore",price:"~¥1,100",chip:LAV,warn:1},
+  {c:1,en:"Medicube face mask",jp:"メディキューブ",ds:"Korean mask/pads (Zero Pore etc.). Confirm which.",where:"Loft / PLAZA / Donki",price:"varies",chip:LAV,warn:1},
+  {c:1,en:"Cooling patches",jp:"冷却シート",ds:"Cooling gel sheets (e.g. Netsusama). Confirm face vs forehead vs body.",where:"Drugstore / conbini",price:"~¥400",chip:LAV,warn:1},
+  {c:1,en:"Capsule Vitamin C spray mask",jp:"ビタミンC スプレー/マスク",ds:"Couldn't match exactly — confirm the brand/format.",where:"Loft / Donki",price:"—",chip:LAV,warn:1},
+  {c:1,en:"MegRhythm Steam Neck care",jp:"めぐりズム 蒸気で温感 首",ds:"'dehestia neck care sheet' — likely a warming neck steam sheet. Confirm brand.",where:"Drugstore",price:"~¥600",chip:LAV,warn:1},
+  {c:2,en:"Kosé Makekeep Mist",jp:"コーセー メイクキープミスト",ds:"Makeup setting spray, holds all day. Blue bottle.",where:"Drugstore / Donki",price:"~¥1,000",chip:PINK},
+  {c:2,en:"DHC Lip Balm",jp:"DHC 薬用リップクリーム",ds:"Iconic olive-oil lip cream.",where:"Drugstore / DHC",price:"~¥800",chip:PINK},
+  {c:2,en:"Lip plumper",jp:"リッププランパー",ds:"'Reedles' — brand unclear. Maybe a VT/rom&nd plumper? Confirm with Sage.",where:"Loft / PLAZA",price:"—",chip:PINK,warn:1},
+  {c:3,en:"Dove Creamy Body Scrub",jp:"ダヴ ボディスクラブ",ds:"Creamy exfoliating body scrub.",where:"Drugstore / supermarket",price:"~¥700",chip:YEL},
+  {c:3,en:"Salonia glossy care comb",jp:"サロニア",ds:"SALONIA hair tools (heated comb / brush). Confirm exact item.",where:"Bic Camera / Loft / Donki",price:"varies",chip:YEL,warn:1},
+  {c:3,en:"Straightening spray",jp:"ストレートヘアスプレー",ds:"Heat-style straightening mist (e.g. Lucido-L / &honey). Confirm brand.",where:"Drugstore / Donki",price:"~¥800",chip:YEL,warn:1},
+  {c:3,en:"Underarm exfoliating soap",jp:"わき 角質ケア せっけん",ds:"'himocoto' — couldn't match. Confirm the brand name.",where:"Drugstore / Loft",price:"—",chip:YEL,warn:1},
+  {c:4,en:"Roihi-Tsuboko",jp:"ロイヒつぼ膏",ds:"Round warming pain-relief patches for shoulders/back. The hero.",where:"Drugstore / Donki",price:"~¥1,000",chip:MINT},
+  {c:4,en:"Ashirira Foot Relax Sheet",jp:"足リラ 樹液シート",ds:"Stick on soles overnight, wake up refreshed. ('foot healing pad'.)",where:"Drugstore / Donki",price:"~¥1,000",chip:MINT},
+  {c:4,en:"Pair Acne Cream W",jp:"ペア アクネクリームW",ds:"Spot acne treatment cream (Lion).",where:"Drugstore",price:"~¥900",chip:MINT},
+  {c:4,en:"Mouthwash packets",jp:"携帯 マウスウォッシュ",ds:"Single-use mouthwash sachets (Ora2 / Okuchi).",where:"Drugstore / conbini",price:"~¥300",chip:MINT},
+  {c:4,en:"Lion stain remover",jp:"携帯 しみ抜き (ライオン)",ds:"Portable laundry stain pen/stick. Confirm exact Lion product.",where:"Drugstore / supermarket",price:"~¥400",chip:MINT,warn:1},
+  {c:4,en:"Teeth whitening clean brush",jp:"歯 ホワイトニング ブラシ",ds:"'teeth master white' — confirm exact tool/brand.",where:"Drugstore / Loft",price:"—",chip:MINT,warn:1},
+];
+
+// maneki-neko checkbox SVG (starts asleep/grey via CSS filter, wakes + waves when .done)
+function neko(){return `
+<svg class="neko" viewBox="0 0 60 66" aria-hidden="true">
+  <g class="paw"><ellipse cx="11" cy="19" rx="6.5" ry="7.5" fill="#fff" stroke="#3A2E4D" stroke-width="2.4"/></g>
+  <ellipse cx="30" cy="52" rx="15" ry="9" fill="#FFD54A" stroke="#3A2E4D" stroke-width="2.4"/>
+  <ellipse cx="30" cy="52" rx="8.5" ry="4.2" fill="none" stroke="#E0A43B" stroke-width="1.6"/>
+  <path d="M13 56 C10 33 20 29 30 29 C40 29 50 33 47 56 Z" fill="#fff" stroke="#3A2E4D" stroke-width="2.4"/>
+  <ellipse cx="20" cy="53" rx="5" ry="4" fill="#fff" stroke="#3A2E4D" stroke-width="2.2"/>
+  <circle cx="30" cy="21" r="16" fill="#fff" stroke="#3A2E4D" stroke-width="2.4"/>
+  <path d="M16 10 L13 0 L26 7 Z" fill="#fff" stroke="#3A2E4D" stroke-width="2.2" stroke-linejoin="round"/>
+  <path d="M44 10 L47 0 L34 7 Z" fill="#fff" stroke="#3A2E4D" stroke-width="2.2" stroke-linejoin="round"/>
+  <path d="M18.5 8 L16.5 3.5 L23 6 Z" fill="#FFB6CE"/><path d="M41.5 8 L43.5 3.5 L37 6 Z" fill="#FFB6CE"/>
+  <circle cx="21" cy="25.5" r="3.2" fill="#FF9DBB"/><circle cx="39" cy="25.5" r="3.2" fill="#FF9DBB"/>
+  <circle cx="24" cy="20" r="2.4" fill="#3A2E4D"/><circle cx="36" cy="20" r="2.4" fill="#3A2E4D"/>
+  <circle cx="24.9" cy="19.2" r=".8" fill="#fff"/><circle cx="36.9" cy="19.2" r=".8" fill="#fff"/>
+  <ellipse cx="30" cy="23.4" rx="1.5" ry="1" fill="#FF7FA3"/>
+  <path d="M30 24.3 Q27.5 26.8 25.5 25.2 M30 24.3 Q32.5 26.8 34.5 25.2" fill="none" stroke="#3A2E4D" stroke-width="1.4" stroke-linecap="round"/>
+  <g stroke="#3A2E4D" stroke-width="1.2" stroke-linecap="round"><path d="M13 20 L21 21"/><path d="M13 24 L21 23.5"/><path d="M47 20 L39 21"/><path d="M47 24 L39 23.5"/></g>
+  <path d="M20 33 Q30 39 40 33" fill="none" stroke="#E23B4E" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="30" cy="37" r="4" fill="#FFD54A" stroke="#3A2E4D" stroke-width="1.8"/>
+</svg>`;}
+
+const grids=[...document.querySelectorAll('[data-cat]')];
+let total=items.length, found=0;
+document.getElementById('total').textContent=total;
+
+const KEY='sage-tokyo-haul-v1';
+let saved={};
+try{ saved=JSON.parse(localStorage.getItem(KEY))||{}; }catch(e){ saved={}; }
+function persist(){ try{ localStorage.setItem(KEY,JSON.stringify(saved)); }catch(e){} }
+
+items.forEach((it,idx)=>{
+  const id='i'+idx;
+  const el=document.createElement('div');
+  el.className='tag';
+  el.style.setProperty('--chip',it.chip);
+  el.innerHTML=`
+    ${neko()}
+    <div class="body">
+      <div class="en">${it.en}</div>
+      <div class="jp">${it.jp}</div>
+      <div class="ds">${it.ds}</div>
+      <div class="meta">
+        <span class="chip where">📍 ${it.where}</span>
+        ${it.price!=='—'?`<span class="chip price">${it.price}</span>`:''}
+        ${it.warn?`<span class="chip warn">❓ confirm</span>`:''}
+      </div>
+    </div>
+    <span class="sticker">GET!♡</span>`;
+  if(saved[id]){ el.classList.add('done'); found++; }
+  el.addEventListener('click',()=>{
+    el.classList.toggle('done');
+    const on=el.classList.contains('done');
+    found += on?1:-1;
+    saved[id]=on; persist(); update();
+  });
+  grids[it.c].appendChild(el);
+});
+
+function update(){
+  document.getElementById('cnt').textContent=found;
+  document.getElementById('barfill').style.width=(found/total*100)+'%';
+  const c=document.getElementById('celebrate');
+  if(found===0){c.textContent='';}
+  else if(found===total){c.textContent='🎉 全部ゲット！ Haul complete!! 🐾✨';}
+  else if(found>=Math.ceil(total*0.6)){c.textContent='so close!! ♡';}
+  else {c.textContent='';}
+}
+update();
+
+document.getElementById('resetBtn').addEventListener('click',()=>{
+  if(!confirm('Clear all the cats?'))return;
+  saved={}; persist();
+  document.querySelectorAll('.tag.done').forEach(t=>t.classList.remove('done'));
+  found=0; update();
+});
+</script>
+</body>
+</html>

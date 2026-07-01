@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Japan Trip">
+<meta name="theme-color" content="#0E2A47">
+<title>Japan 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Antique&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#11253D;        /* deep indigo navy */
+    --sea:#0E7C9A;        /* kerama teal */
+    --vermilion:#E2483A;  /* torii red */
+    --gold:#E0A43B;       /* sunset gold */
+    --paper:#FBF7EF;      /* washi */
+    --paper2:#F2EBDD;
+    --mist:#6A7A88;
+    --line:#E2D9C6;
+    --ok:#1E9E6A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:"Zen Kaku Gothic New",system-ui,sans-serif;line-height:1.6}
+  img{display:block;max-width:100%}
+  a{color:var(--sea);text-decoration:none}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 18px}
+
+  /* ===== HERO ===== */
+  .hero{position:relative;min-height:78vh;display:flex;align-items:flex-end;color:#fff;overflow:hidden}
+  .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,37,61,.25) 0%,rgba(17,37,61,.15) 45%,rgba(17,37,61,.88) 100%);z-index:1}
+  .hero .wrap{position:relative;z-index:2;padding-bottom:46px;width:100%}
+  .hero .eyebrow{font-weight:700;letter-spacing:.32em;text-transform:uppercase;font-size:.72rem;opacity:.9}
+  .hero h1{font-family:"Zen Antique",serif;font-weight:400;font-size:clamp(2.8rem,9vw,6rem);line-height:.95;margin:8px 0 6px;text-shadow:0 2px 30px rgba(0,0,0,.4)}
+  .hero .jp{font-family:"Zen Antique",serif;font-size:clamp(1rem,3.5vw,1.6rem);opacity:.92;letter-spacing:.1em}
+  .hero .dates{margin-top:14px;font-size:1rem;font-weight:500;opacity:.95}
+  .hero .stat-row{display:flex;gap:22px;margin-top:22px;flex-wrap:wrap}
+  .hero .stat b{font-family:"Zen Antique",serif;font-size:1.8rem;display:block;line-height:1}
+  .hero .stat span{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;opacity:.85}
+
+  /* ===== NAV ===== */
+  nav{position:sticky;top:0;z-index:50;background:rgba(251,247,239,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;gap:4px;overflow-x:auto;padding:9px 18px;scrollbar-width:none}
+  nav .wrap::-webkit-scrollbar{display:none}
+  nav a{flex:0 0 auto;font-size:.8rem;font-weight:700;color:var(--mist);padding:6px 11px;border-radius:99px;white-space:nowrap}
+  nav a:hover{color:var(--ink);background:var(--paper2)}
+  nav a.key{color:var(--vermilion)}
+
+  /* ===== SECTION TITLES ===== */
+  .band{padding:46px 0 8px}
+  .band h2{font-family:"Zen Antique",serif;font-weight:400;font-size:2rem;display:flex;align-items:baseline;gap:12px}
+  .band h2 .jp{font-size:1rem;color:var(--mist);font-family:"Zen Kaku Gothic New"}
+  .band p.lead{color:var(--mist);margin-top:6px;max-width:60ch}
+
+  /* ===== LOGISTICS DASHBOARD ===== */
+  .dash{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-top:18px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 4px 18px rgba(17,37,61,.05)}
+  .card .h{display:flex;align-items:center;gap:8px;font-weight:900;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);margin-bottom:12px}
+  .card .h .ico{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;color:#fff;font-size:.9rem}
+  .leg{padding:10px 0;border-bottom:1px dashed var(--line)}
+  .leg:last-child{border-bottom:0;padding-bottom:0}
+  .leg .rt{display:flex;justify-content:space-between;align-items:baseline;font-weight:700}
+  .leg .rt .code{font-family:"Zen Antique",serif;font-size:1.05rem}
+  .leg .rt .conf{font-size:.72rem;color:var(--vermilion);font-weight:700;letter-spacing:.05em}
+  .leg .det{font-size:.82rem;color:var(--mist);margin-top:2px}
+  .pill{display:inline-block;font-size:.66rem;font-weight:800;padding:2px 8px;border-radius:99px;letter-spacing:.04em;text-transform:uppercase}
+  .pill.booked{background:#E2F6EC;color:var(--ok)}
+  .pill.todo{background:#FBE7D6;color:#B5651A}
+
+  .status-row{display:flex;align-items:center;gap:8px;padding:7px 0;font-size:.88rem;border-bottom:1px dashed var(--line)}
+  .status-row:last-child{border-bottom:0}
+  .status-row .nm{flex:1}
+
+  /* ===== DAYS ===== */
+  .day{padding:30px 0;border-top:2px solid var(--ink);margin-top:30px}
+  .day-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .day-num{font-family:"Zen Antique",serif;font-size:2.6rem;color:var(--vermilion);line-height:.8}
+  .day-meta .date{font-weight:900;letter-spacing:.04em}
+  .day-meta .title{font-family:"Zen Antique",serif;font-size:1.5rem;margin-top:-2px}
+  .day-meta .where{font-size:.78rem;color:var(--mist);text-transform:uppercase;letter-spacing:.1em;font-weight:700}
+  .day-badge{margin-left:auto;align-self:center}
+
+  .hero-img{margin:18px 0;border-radius:16px;overflow:hidden;aspect-ratio:16/8;border:1px solid var(--line)}
+  .hero-img img{width:100%;height:100%;object-fit:cover}
+  .vibe{font-family:"Zen Antique",serif;font-size:1.15rem;color:var(--sea);margin:6px 0 10px}
+  .day p.body{margin-bottom:14px}
+
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0}
+  .gallery figure{margin:0;border-radius:12px;overflow:hidden;position:relative;aspect-ratio:1/1;border:1px solid var(--line)}
+  .gallery img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+  .gallery figure:hover img{transform:scale(1.06)}
+  .gallery figcaption{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(transparent,rgba(17,37,61,.85));color:#fff;font-size:.72rem;font-weight:600;padding:14px 8px 6px}
+
+  .stops{list-style:none;margin:8px 0 0;border-left:2px solid var(--line);padding-left:0}
+  .stops li{position:relative;padding:8px 0 8px 22px}
+  .stops li::before{content:"";position:absolute;left:-6px;top:15px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid var(--paper)}
+  .stops .t{font-weight:700}
+  .stops .t a.stoplink{color:var(--sea);text-decoration:none;border-bottom:1.5px solid rgba(14,124,154,.3)}
+  .stops .t a.stoplink:hover{border-bottom-color:var(--sea)}
+  .stops .time{font-size:.72rem;color:var(--mist);font-weight:700;letter-spacing:.04em}
+  .stops .n{font-size:.86rem;color:var(--mist)}
+  .stops a{font-size:.8rem;font-weight:700}
+
+  .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .links a{font-size:.76rem;font-weight:700;background:#fff;border:1px solid var(--line);padding:6px 11px;border-radius:99px}
+  .links a:hover{border-color:var(--sea)}
+
+  /* checkable day */
+  .dchk{display:flex;align-items:center;gap:8px;margin-top:14px;cursor:pointer;font-size:.8rem;font-weight:700;color:var(--mist);user-select:none}
+  .dchk .b{width:20px;height:20px;border:2px solid var(--mist);border-radius:6px;display:grid;place-items:center;color:#fff;font-size:.7rem}
+  .day.done .dchk .b{background:var(--ok);border-color:var(--ok)}
+  .day.done .dchk{color:var(--ok)}
+
+  .keyday{background:var(--vermilion);color:#fff;font-family:"Zen Kaku Gothic New";font-weight:900;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:5px 11px;border-radius:99px}
+  .keyday.dive{background:var(--sea)}
+  .keyday.fest{background:var(--gold);color:var(--ink)}
+
+  footer{background:var(--ink);color:#fff;margin-top:50px;padding:36px 0;text-align:center}
+  footer .jp{font-family:"Zen Antique",serif;font-size:1.4rem;opacity:.9}
+  footer p{font-size:.82rem;opacity:.7;margin-top:8px}
+
+  @media(max-width:560px){
+    .gallery{grid-template-columns:repeat(2,1fr)}
+    .day-num{font-size:2rem}
+  }
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <img src="images/hero_fuji.jpg" alt="Mt. Fuji and Chureito Pagoda">
+  <div class="wrap">
+    <div class="eyebrow">10 days · Tokyo · Okinawa · Kyoto</div>
+    <h1>Japan 2026</h1>
+    <div class="jp">日本の旅 — David &amp; Sage</div>
+    <div class="dates">July 17 – 26, 2026</div>
+    <div class="stat-row">
+      <div class="stat"><b>10</b><span>Days</span></div>
+      <div class="stat"><b>3</b><span>Cities</span></div>
+      <div class="stat"><b>2</b><span>Dives</span></div>
+      <div class="stat"><b>1</b><span>Whale shark</span></div>
+      <div class="stat"><b>祭</b><span>Gion Matsuri</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav><div class="wrap">
+  <a href="#logistics" class="key">Logistics</a>
+  <a href="#d1">D1</a><a href="#d2">D2</a><a href="#d3">D3</a>
+  <a href="#d4">D4</a><a href="#d5">D5</a><a href="#d6">D6</a>
+  <a href="#d7">D7</a><a href="#d8">D8</a><a href="#d9">D9</a><a href="#d10">D10</a>
+</div></nav>
+
+<div class="wrap">
+
+<!-- ===== LOGISTICS ===== -->
+<div id="logistics" class="band">
+  <h2>Logistics <span class="jp">予約状況</span></h2>
+  <p class="lead">Everything booked and still-to-book, in one place. Tap a day below to check it off as you go.</p>
+</div>
+
+<div class="dash">
+  <!-- FLIGHTS -->
+  <div class="card">
+    <div class="h"><span class="ico" style="background:var(--sea)">✈</span> Flights</div>
+    <div class="leg">
+      <div class="rt"><span class="code">UA7914</span><span class="conf">booked ✓</span></div>
+      <div class="det">SFO → HND · Thu Jul 16, 1:40 AM → Fri Jul 17, 4:25 AM · operated by ANA · seats 31E/31F</div>
+    </div>
+    <div class="leg">
+      <div class="rt"><span class="code">NH469 · Tokyo → Naha</span><span class="conf">booked ✓</span></div>
+      <div class="det">HND → Naha · Mon Jul 20, 10:20 AM → 1:00 PM · ANA nonstop</div>
+    </div>
+    <div class="leg">
+      <div class="rt"><span class="code">NH762 · Naha → ITM</span><span class="conf">booked ✓</span></div>
+      <div class="det">Naha → Osaka Itami · Thu Jul 23, 11:15 AM → 1:15 PM · ANA nonstop · for the Kyoto leg</div>
+    </div>
+    <div class="leg">
+      <div class="rt"><span class="code">UA876</span><span class="conf">booked ✓</span></div>
+      <div class="det">HND → SFO · Sun Jul 26, 3:50 PM → 9:45 AM · seats 35A/35B</div>
+    </div>
+  </div>
+
+  <!-- TRAINS / TRANSIT -->
+  <div class="card">
+    <div class="h"><span class="ico" style="background:var(--vermilion)">🚄</span> Trains &amp; transit</div>
+    <div class="leg">
+      <div class="rt"><span class="code">Itami → Kyoto</span><span class="pill todo">to book</span></div>
+      <div class="det">Thu Jul 23 · airport limousine bus ~55 min</div>
+    </div>
+    <div class="leg">
+      <div class="rt"><span class="code">Nozomi 6 · Kyoto → Tokyo</span><span class="conf">booked ✓</span></div>
+      <div class="det">Sat Jul 25, 10:01 → 12:15 · Car 3, seats 7-D / 7-E (Fuji side) · Smart EX · board with QR-Ticket</div>
+    </div>
+    <div class="leg">
+      <div class="rt"><span class="code">Okinawa rental car</span><span class="pill todo">to book</span></div>
+      <div class="det">Jul 20 pickup → Jul 23 return · IDPs required</div>
+    </div>
+  </div>
+
+  <!-- DIVE -->
+  <div class="card">
+    <div class="h"><span class="ico" style="background:var(--sea)">🤿</span> The dive</div>
+    <div class="leg">
+      <div class="rt"><span class="code">Alpha Dive — Kerama</span><span class="conf">PAID ✓</span></div>
+      <div class="det">Tue Jul 21 · 2-tank fun dive · deposit ¥33,000 paid (Visa ·7525)</div>
+    </div>
+    <div class="leg">
+      <div class="det"><b>Meet 7:45 AM</b> · Ginowan Marina · self-drive, no pickup</div>
+      <div class="det">Day-of: Akira (captain) · WhatsApp +81 90 7585 8476</div>
+      <div class="det">⚠ No sun oil · no aerosol deodorant/perfume on boat · bring cert cards, log books, lunch</div>
+    </div>
+  </div>
+
+  <!-- HOTELS -->
+  <div class="card">
+    <div class="h"><span class="ico" style="background:var(--gold)">🛏</span> Hotels</div>
+    <div class="status-row"><span class="nm">Tokyo · Shibuya Excel · Jul 17–19 (3 nt)</span><span class="pill booked">booked ✓</span></div>
+    <div class="status-row"><span class="nm">Chatan · Jul 20 (1 nt)</span><span class="pill todo">to book</span></div>
+    <div class="status-row"><span class="nm">Motobu · Orion Resort · Jul 21–22 (2 nt)</span><span class="pill todo">to book</span></div>
+    <div class="status-row"><span class="nm">Kyoto · Muromachi Yutone · Jul 23–24 (2 nt)</span><span class="pill booked">booked ✓</span></div>
+    <div class="det" style="font-size:.74rem;color:var(--mist);margin:-2px 0 6px">Fujimurasaki twin · top floor · in-room hinoki bath · <a href="https://www.m-yutone.com/lg_en/room/?id=room6" target="_blank" rel="noopener" style="color:var(--sea)">see the room ↗</a></div>
+    <div class="status-row"><span class="nm">Tokyo · Jul 25 (1 nt)</span><span class="pill todo">to book</span></div>
+    <div class="det" style="font-size:.76rem;color:var(--mist);margin-top:8px">⚠ Still open: Chatan (Jul 20), Orion ×2 (Jul 21–22), Tokyo (Jul 25)</div>
+  </div>
+
+  <!-- RESERVATIONS -->
+  <div class="card">
+    <div class="h"><span class="ico" style="background:var(--vermilion)">🍜</span> Reservations &amp; tickets</div>
+    <div class="status-row"><span class="nm">Mizutaki Hatano — nagashi somen (Jul 18)</span><span class="pill todo">to book</span></div>
+    <div class="status-row"><span class="nm">Shibuya Sky sunset (Jul 17)</span><span class="pill todo">Jul 2 alarm</span></div>
+    <div class="status-row"><span class="nm">teamLab Planets (Jul 18, 10 AM)</span><span class="pill booked">booked ✓</span></div>
+    <div class="status-row"><span class="nm">Muromachi kaiseki dinner (Jul 24) — optional, request 19:00 seating</span><span class="pill todo">decide by Jul 20</span></div>
+    <div class="status-row"><span class="nm">Manten Sushi lunch (optional)</span><span class="pill todo">to book</span></div>
+  </div>
+
+  <!-- ADMIN -->
+  <div class="card">
+    <div class="h"><span class="ico" style="background:var(--mist)">📋</span> Admin</div>
+    <div class="status-row"><span class="nm">Passports valid 6+ mo</span><span class="pill todo">check</span></div>
+    <div class="status-row"><span class="nm">Int'l Driving Permits ×2</span><span class="pill todo">AAA</span></div>
+    <div class="status-row"><span class="nm">DAN dive insurance</span><span class="pill todo">to book</span></div>
+    <div class="status-row"><span class="nm">Diver medical forms</span><span class="pill todo">send</span></div>
+    <div class="status-row"><span class="nm">eSIM + Suica in Wallet</span><span class="pill todo">setup</span></div>
+  </div>
+</div>
+
+<!-- ===== DAY BY DAY ===== -->
+<div class="band"><h2>Day by day <span class="jp">旅程</span></h2></div>
+
+<!-- DAYS INJECTED HERE -->
+<div id="days"></div>
+
+</div><!-- /wrap -->
+
+<footer>
+  <div class="wrap">
+    <div class="jp">いってきます</div>
+    <p>Japan · July 17–26, 2026 · tap days to check them off</p>
+  </div>
+</footer>
+
+<script>
+const days=[
+ {id:'d1',n:1,date:'Fri · Jul 17',where:'Tokyo',title:'Land Tokyo',hero:'shibuya_crossing.jpg',
+  vibe:'Land at dawn. Crash. Sunset on the roof.',
+  body:"Land HND 4:25 AM, drop bags in Shibuya, sleep a few hours. Easy first lap of Shibuya \u2014 Center Gai, 109, MEGA Don Quijote \u2014 then the rooftop at sunset.",
+  gallery:[['shibuya_crossing.jpg','Shibuya Crossing'],['shibuya_sky.jpg','Shibuya Sky'],['tokyo','']],
+  stops:[['~6 AM','Hotel + nap','Store bags, early check-in if you can'],['4 PM','Shibuya Crossing','The scramble + wide shot from the Starbucks','https://www.google.com/maps/search/Shibuya+Crossing'],['5:30 PM','Shibuya Sky','Open-air rooftop sunset, book ahead','https://www.shibuya-scramble-square.com/sky/']],
+  links:[['Shibuya Sky tickets','https://www.shibuya-scramble-square.com/sky/']]},
+
+ {id:'d2',n:2,date:'Sat · Jul 18',where:'Tokyo',title:'Shopping Day',hero:'harajuku.jpg',badge:['key','★ Shopping + nagashi somen'],
+  vibe:'Digital art at open, then the outfit hunt, then noodles down a chute.',
+  body:"teamLab first thing while it's calm \u2014 out to Toyosu on the east side for the 10 AM slot, before the crowds and heat build. Then sweep back west: a calm reset at Meiji Jing\u016b, then Harajuku \u2192 Omotesando \u2192 Shibuya109, Iyoshi Cola mid-crawl, Brandy Melville + Kiddy Land on the list. Nagashi somen for dinner. No backtracking, open pace all afternoon.",
+  gallery:[['harajuku.jpg','Takeshita St'],['teamlab.jpg','teamLab Planets'],['somen.jpg','Nagashi somen']],
+  stops:[['10 AM','teamLab Planets','Toyosu \u2014 ride to Shin-Toyosu Stn (Yurikamome). Booked timed slot','https://www.teamlab.art/e/planets/'],['1 PM','Meiji Jing\u016b','Forest shrine 2 min from Harajuku \u2014 serene cool-down before the chaos','https://www.meijijingu.or.jp/en/'],['2 PM','Takeshita St + Cat St','Brandy Melville, Kiddy Land, Smiski','https://www.google.com/maps/search/Takeshita+Street+Harajuku'],['3 PM','Iyoshi Cola','Omotesando \u2192 Shibuya109, craft cola pit stop','https://iyoshicola.com/'],['7 PM','Mizutaki Hatano','Nagashi somen course \u2014 ask for the somen course','https://tabelog.com/en/tokyo/A1303/A130301/13220215/']],
+  links:[['Shopping guide (Sage)','sage_japan_shopping_guide.html'],['Mizutaki Tabelog','https://tabelog.com/en/tokyo/A1303/A130301/13220215/'],['teamLab tickets','https://www.teamlab.art/e/planets/']]},
+
+ {id:'d3',n:3,date:'Sun · Jul 19',where:'Tokyo',title:'Old Tokyo + cat temple',hero:'senso-ji.jpg',
+  vibe:'Temples, market sushi, thousands of cats.',
+  body:"Sens\u014d-ji early before crowds, a Tsukiji sushi lunch, then west to the cat temple in Setagaya where thousands of maneki-neko stack on the shrines.",
+  gallery:[['senso-ji.jpg','Sens\u014d-ji'],['tsukiji.jpg','Tsukiji sushi'],['gotokuji.jpg','G\u014dtoku-ji cats']],
+  stops:[['8:30 AM','Sens\u014d-ji','Nakamise St snacks, go early','https://www.senso-ji.jp/english/'],['11:30 AM','Tsukiji Outer Market','Sushi Dai (queue) or Yamacho (no wait)','https://www.tsukiji.or.jp/english/'],['2:30 PM','G\u014dtoku-ji','Cat temple, buy a maneki-neko','https://gotokuji.jp/']],
+  links:[['G\u014dtoku-ji info','https://gotokuji.jp/']]},
+
+ {id:'d4',n:4,date:'Mon · Jul 20',where:'Tokyo → Okinawa',title:'Fly to Okinawa',hero:'okinawa.jpg',
+  vibe:'Travel day. Soft landing.',
+  body:"Morning flight to Naha (~2.5h). Pick up the rental car, drive ~45 min to Chatan, settle near the marina. Easy American Village evening \u2014 Okinawa soba, taco rice. Dive launches early tomorrow.",
+  gallery:[['okinawa.jpg','Okinawa coast'],['american_village.jpg','American Village'],['shuri.jpg','Ryukyu flavor']],
+  stops:[['AM','Tokyo \u2192 Naha','ANA direct, book early','https://www.ana.co.jp/en/us/'],['PM','Pick up rental car','Drive Hwy 58 to Chatan'],['Eve','American Village','Ferris wheel, dinner, sleep near marina','https://www.okinawa-americanvillage.com/en/']]},
+
+ {id:'d5',n:5,date:'Tue · Jul 21',where:'Okinawa',title:'Kerama Islands dive',hero:'kerama.jpg',badge:['dive','★ The dive day'],
+  vibe:'The reason we came.',
+  body:"Boat leaves Ginowan Marina ~8:30 AM out to the Kerama Islands \u2014 Kerama Blue water, sea turtles expected, coral walls. Two-tank trip, back ~3:30 PM, then drive ~75 min north to Motobu to sleep by the aquarium.",
+  gallery:[['sea_turtle.jpg','Sea turtle (near Naha)'],['coral.jpg','Table coral'],['clownfish.jpg','Clownfish']],
+  stops:[['7:45 AM','Ginowan Marina','Meet Alpha Dive (Akira). Cert cards + log books','https://www.a-diveokinawa.com/en'],['8:30 AM','Depart','~50 min cruise to Kerama'],['10\u201312','Two-tank dive','Bentos on the boat between dives'],['PM','Drive to Motobu','Sleep next to Churaumi']],
+  links:[['Alpha Dive','https://www.a-diveokinawa.com/en']]},
+
+ {id:'d6',n:6,date:'Wed · Jul 22',where:'Okinawa',title:'Whale sharks + the north',hero:'churaumi_tank.jpg',
+  vibe:'Best aquarium day of your life \u2014 and a second night at the Orion.',
+  body:"No packing up today \u2014 you\u2019re at the Orion two nights. Walk to Churaumi for the 8:30 AM opening (whale sharks + manta rays in the Kuroshio tank), swim at Emerald Beach right below the resort, then wander the Bise fukugi tree lanes \u2014 300-year-old canopy roads by the sea. Optional afternoon run over the bridge to Kouri Island, then an authentic Okinawan dinner off-resort.",
+  gallery:[['churaumi_tank.jpg','Churaumi \u2014 Kuroshio tank'],['emerald_beach.jpg','Emerald Beach, by the Orion'],['bise_fukugi.jpg','Bise fukugi tree lane']],
+  stops:[['8:30 AM','Churaumi Aquarium','Whale sharks, dolphin show, manatees \u2014 walk from the Orion','https://churaumi.okinawa/en/'],['11 AM','Emerald Beach','Free white sand, right below the resort','https://churaumi.okinawa/en/enjoy/emerald/'],['1 PM','Bise Fukugi Tree Road','300-yr banyan lanes by the sea \u2014 walk or rent bikes','https://www.google.com/maps/search/Bise+Fukugi+Tree+Road+Motobu'],['6 PM','Shokujidokoro Sen','Authentic Okinawan small plates, ~5 min off-resort (cash only)','https://www.google.com/maps/search/%E9%A3%9F%E4%BA%8B%E5%87%A6+%E5%8D%83+Motobu']],
+  links:[['Churaumi','https://churaumi.okinawa/'],['Kouri Island','https://www.google.com/maps/search/Kouri+Island+Okinawa']]},
+
+ {id:'d7',n:7,date:'Thu · Jul 23',where:'Okinawa → Kyoto',title:'Fly to Kyoto + festival',hero:'fushimi_inari.jpg',badge:['fest','★ Gion Matsuri'],
+  vibe:'Torii gates at golden hour, then a 1,000-year-old festival.',
+  body:"Fly Naha \u2192 Osaka Itami (~2h), bus ~55 min into Kyoto. Fushimi Inari's torii gates glow at golden hour, then the Gion Matsuri yoiyama evening \u2014 lantern-lit streets, food stalls, yukata.",
+  gallery:[['fushimi_inari.jpg','Fushimi Inari'],['gion.jpg','Gion district'],['gion_matsuri.jpg','Gion Matsuri']],
+  stops:[['12:30 PM','Naha \u2192 Itami','ANA/JAL direct, then limousine bus','https://www.osaka-airport.co.jp/en/'],['3:30 PM','Muromachi Yutone','Check in + drop bags \u2014 your ryokan, in-room hinoki bath','https://www.m-yutone.com/lg_en/room/?id=room6'],['4 PM','Fushimi Inari','Thousands of torii gates, free, golden hour','https://inari.jp/en/'],['7 PM','Gion yoiyama','Festival eve \u2014 stalls, lanterns, geisha district','https://www.insidekyoto.com/gion-matsuri']],
+  links:[['Gion Matsuri','https://www.insidekyoto.com/gion-matsuri']]},
+
+ {id:'d8',n:8,date:'Fri · Jul 24',where:'Kyoto',title:'Festival parade + temples',hero:'gion_matsuri.jpg',badge:['fest','★ Float parade'],
+  vibe:'Giant floats, then Kyoto\u2019s icons.',
+  body:"The Yamaboko Junko float parade rolls through downtown 9:30\u201311:50 AM \u2014 towering wooden floats, live flutes and drums. Afternoon: Kiyomizu-dera and the Sannenzaka streets, then the Arashiyama bamboo grove at golden hour.",
+  gallery:[['gion_matsuri.jpg','Float parade'],['kiyomizu.jpg','Kiyomizu-dera'],['arashiyama.jpg','Bamboo grove']],
+  stops:[['9:30 AM','Gion Matsuri parade','Yamaboko Junko, downtown','https://www.insidekyoto.com/gion-matsuri'],['1 PM','Kiyomizu-dera','Wooden stage + Sannenzaka shopping','https://www.kiyomizudera.or.jp/en/'],['4:30 PM','Arashiyama','Bamboo grove, late = fewer crowds','https://www.google.com/maps/search/Arashiyama+Bamboo+Grove']],
+  links:[['Kiyomizu-dera','https://www.kiyomizudera.or.jp/en/']]},
+
+ {id:'d9',n:9,date:'Sat · Jul 25',where:'Kyoto → Tokyo',title:'Bullet train + shopping',hero:'shinkansen.jpg',
+  vibe:'Nishiki bites, Fuji from the window, Tokyo shopping.',
+  body:"Morning food crawl at Nishiki Market, then the Nozomi shinkansen back to Tokyo (~2h15m \u2014 grab seats D/E for the Mt. Fuji window view). Afternoon + evening shopping in Tokyo.",
+  gallery:[['nishiki.jpg','Nishiki Market'],['shinkansen.jpg','Shinkansen'],['mt_fuji.jpg','Fuji from the train']],
+  stops:[['8:30 AM','Nishiki Market','"Kyoto\u2019s Kitchen" food crawl','https://www.kyoto-nishiki.or.jp/'],['10:01 AM','Kyoto \u2192 Tokyo','Nozomi 6, ~2h15m, seats D/E for Fuji','https://global.smartex.jp/'],['3 PM','Tokyo shopping','Harajuku / Shibuya / Ginza','https://www.google.com/maps/search/Shibuya+109']]},
+
+ {id:'d10',n:10,date:'Sun · Jul 26',where:'Tokyo',title:'Tsukiji + fly home',hero:'sushi.jpg',
+  vibe:'Last bite.',
+  body:"A final Tsukiji sushi crawl \u2014 uni, tamagoyaki, the egg sando. Conbini snack haul, then HND. UA876 departs 3:50 PM, seats 35A/35B. You gain a day flying east.",
+  gallery:[['tsukiji.jpg','Tsukiji'],['sushi.jpg','Last sushi'],['shibuya_sky.jpg','Sayonara Tokyo']],
+  stops:[['8 AM','Tsukiji breakfast','Last crawl, stalls close ~11','https://www.tsukiji.or.jp/english/'],['1:30 PM','To Haneda','Allow buffer','https://tokyo-haneda.com/en/'],['3:50 PM','UA876 home','Seats 35A/35B','https://www.united.com/']]},
+];
+
+const root=document.getElementById('days');
+const DK='japan-trip-days-v1';
+let dsaved={};
+try{dsaved=JSON.parse(localStorage.getItem(DK))||{}}catch(e){}
+
+days.forEach(d=>{
+  const el=document.createElement('section');
+  el.className='day'+(dsaved[d.id]?' done':'');
+  el.id=d.id;
+  const badge=d.badge?`<span class="day-badge"><span class="keyday ${d.badge[0]}">${d.badge[1]}</span></span>`:'';
+  const gal=d.gallery.map(g=>g[0].endsWith('.jpg')?`<figure><img src="images/${g[0]}" alt="${g[1]}" loading="lazy"><figcaption>${g[1]}</figcaption></figure>`:'').join('');
+  const stops=d.stops.map(s=>{
+    const title = s[3] ? `<a class="stoplink" href="${s[3]}" target="_blank" rel="noopener">${s[1]} ↗</a>` : s[1];
+    return `<li><span class="time">${s[0]}</span><div class="t">${title}</div><div class="n">${s[2]}</div></li>`;
+  }).join('');
+  const links=(d.links||[]).map(l=>`<a href="${l[1]}" target="_blank" rel="noopener">${l[0]} ↗</a>`).join('');
+  el.innerHTML=`
+    <div class="day-head">
+      <div class="day-num">${d.n}</div>
+      <div class="day-meta">
+        <div class="where">${d.where}</div>
+        <div class="date">${d.date}</div>
+        <div class="title">${d.title}</div>
+      </div>
+      ${badge}
+    </div>
+    <div class="hero-img"><img src="images/${d.hero}" alt="${d.title}" loading="lazy"></div>
+    <div class="vibe">${d.vibe}</div>
+    <p class="body">${d.body}</p>
+    <div class="gallery">${gal}</div>
+    <ul class="stops">${stops}</ul>
+    ${links?`<div class="links">${links}</div>`:''}
+    <div class="dchk"><span class="b">✓</span> <span>Day done</span></div>`;
+  el.querySelector('.dchk').addEventListener('click',()=>{
+    el.classList.toggle('done');
+    dsaved[d.id]=el.classList.contains('done');
+    try{localStorage.setItem(DK,JSON.stringify(dsaved))}catch(e){}
+  });
+  root.appendChild(el);
+});
+</script>
+</body>
+</html>

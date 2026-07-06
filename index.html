@@ -202,7 +202,7 @@
     </div>
     <div class="leg">
       <div class="rt"><span class="code">Okinawa rental car</span><span class="pill todo">to book</span></div>
-      <div class="det">Jul 20 pickup → Jul 23 return · IDPs required</div>
+      <div class="det">Jul 20 pickup → Jul 23 return · David's IDP ready (sole driver)</div>
     </div>
   </div>
 
@@ -211,11 +211,12 @@
     <div class="h"><span class="ico" style="background:var(--sea)">🤿</span> The dive</div>
     <div class="leg">
       <div class="rt"><span class="code">Alpha Dive — Kerama</span><span class="conf">PAID ✓</span></div>
-      <div class="det">Tue Jul 21 · 2-tank fun dive · deposit ¥33,000 paid (Visa ·7525)</div>
+      <div class="det">Tue Jul 21 · 3-tank fun dive (3rd added ✓) · deposit ¥33,000 paid (Visa ·7525)</div>
     </div>
     <div class="leg">
       <div class="det"><b>Meet 7:45 AM</b> · Ginowan Marina · self-drive, no pickup</div>
       <div class="det">Day-of: Akira (captain) · WhatsApp +81 90 7585 8476</div>
+      <div class="det">💴 Cash day-of: 3rd dive ¥6,600 + rental gear ¥5,500/pp</div>
       <div class="det">⚠ No sun oil · no aerosol deodorant/perfume on boat · bring cert cards, log books, lunch</div>
     </div>
   </div>
@@ -246,8 +247,8 @@
   <!-- ADMIN -->
   <div class="card">
     <div class="h"><span class="ico" style="background:var(--mist)">📋</span> Admin</div>
-    <div class="status-row"><span class="nm">Passports valid 6+ mo</span><span class="pill todo">check</span></div>
-    <div class="status-row"><span class="nm">Int'l Driving Permits ×2</span><span class="pill todo">AAA</span></div>
+    <div class="status-row"><span class="nm">Passports valid 6+ mo</span><span class="pill booked">done ✓</span></div>
+    <div class="status-row"><span class="nm">Int'l Driving Permit (David)</span><span class="pill booked">done ✓</span></div>
     <div class="status-row"><span class="nm">DAN dive insurance</span><span class="pill todo">to book</span></div>
     <div class="status-row"><span class="nm">Diver medical forms</span><span class="pill todo">send</span></div>
     <div class="status-row"><span class="nm">eSIM + Suica in Wallet</span><span class="pill todo">setup</span></div>
@@ -300,9 +301,9 @@ const days=[
 
  {id:'d5',n:5,date:'Tue · Jul 21',where:'Okinawa',title:'Kerama Islands dive',hero:'kerama.jpg',badge:['dive','★ The dive day'],
   vibe:'The reason we came.',
-  body:"Boat leaves Ginowan Marina ~8:30 AM out to the Kerama Islands \u2014 Kerama Blue water, sea turtles expected, coral walls. Two-tank trip, back ~3:30 PM, then drive ~75 min north to Motobu to sleep by the aquarium.",
+  body:"Boat leaves Ginowan Marina ~8:30 AM out to the Kerama Islands \u2014 Kerama Blue water, sea turtles expected, coral walls. You\u2019re doing all three tanks (added the optional third), so back mid-afternoon, then drive ~75 min north to Motobu to sleep by the aquarium.",
   gallery:[['sea_turtle.jpg','Sea turtle (near Naha)'],['coral.jpg','Table coral'],['clownfish.jpg','Clownfish']],
-  stops:[['7:45 AM','Ginowan Marina','Meet Alpha Dive (Akira). Cert cards + log books','https://www.a-diveokinawa.com/en'],['8:30 AM','Depart','~50 min cruise to Kerama'],['10\u201312','Two-tank dive','Bentos on the boat between dives'],['PM','Drive to Motobu','Sleep next to Churaumi']],
+  stops:[['7:45 AM','Ginowan Marina','Meet Alpha Dive (Akira). Cert cards + log books','https://www.a-diveokinawa.com/en'],['8:30 AM','Depart','~50 min cruise to Kerama'],['10 AM\u20132 PM','Three-tank dive','Bentos between dives \u00b7 3rd dive \u00a56,600 + gear cash day-of'],['Mid-PM','Drive to Motobu','Sleep next to Churaumi']],
   links:[['Alpha Dive','https://www.a-diveokinawa.com/en']]},
 
  {id:'d6',n:6,date:'Wed · Jul 22',where:'Okinawa',title:'Whale sharks + the north',hero:'churaumi_tank.jpg',
@@ -313,18 +314,18 @@ const days=[
   links:[['Churaumi','https://churaumi.okinawa/'],['Kouri Island','https://www.google.com/maps/search/Kouri+Island+Okinawa']]},
 
  {id:'d7',n:7,date:'Thu · Jul 23',where:'Okinawa → Kyoto',title:'Fly to Kyoto + festival',hero:'fushimi_inari.jpg',badge:['fest','★ Gion Matsuri'],
-  vibe:'Torii gates at golden hour, then a 1,000-year-old festival.',
-  body:"Fly Naha \u2192 Osaka Itami (~2h), bus ~55 min into Kyoto. Fushimi Inari's torii gates glow at golden hour, then the Gion Matsuri yoiyama evening \u2014 lantern-lit streets, food stalls, yukata.",
-  gallery:[['kyoto_city.jpg','Into Kyoto'],['gion.jpg','Gion district'],['gion_yoiyama.jpg','Gion Matsuri eve']],
-  stops:[['12:30 PM','Naha \u2192 Itami','ANA/JAL direct, then limousine bus','https://www.osaka-airport.co.jp/en/'],['3:30 PM','Muromachi Yutone','Check in + drop bags \u2014 your ryokan, in-room hinoki bath','https://www.m-yutone.com/lg_en/room/?id=room6'],['4 PM','Fushimi Inari','Thousands of torii gates, free, golden hour','https://inari.jp/en/'],['7 PM','Gion yoiyama','Festival eve \u2014 stalls, lanterns, geisha district','https://www.insidekyoto.com/gion-matsuri']],
-  links:[['Gion Matsuri','https://www.insidekyoto.com/gion-matsuri']]},
+  vibe:'A hillside temple, then a 1,000-year-old festival.',
+  body:"Fly Naha \u2192 Osaka Itami (~2h), bus ~55 min into Kyoto. Drop bags, then Kiyomizu-dera's wooden stage and the Sannenzaka lanes, walking down into Gion for the Matsuri yoiyama evening \u2014 lantern-lit streets, food stalls, yukata. Fushimi Inari's torii glow at dusk if you\u2019ve still got the legs (open 24h, quieter after dark).",
+  gallery:[['kiyomizu.jpg','Kiyomizu-dera'],['gion.jpg','Gion district'],['gion_yoiyama.jpg','Gion Matsuri eve']],
+  stops:[['12:30 PM','Naha \u2192 Itami','ANA/JAL direct, then limousine bus','https://www.osaka-airport.co.jp/en/'],['3:30 PM','Muromachi Yutone','Check in + drop bags \u2014 your ryokan, in-room hinoki bath','https://www.m-yutone.com/lg_en/room/?id=room6'],['4:30 PM','Kiyomizu-dera','Wooden stage + Sannenzaka lanes \u00b7 closes 6 PM','https://www.kiyomizudera.or.jp/en/'],['7 PM','Gion yoiyama','Festival eve \u2014 stalls, lanterns, geisha district','https://www.insidekyoto.com/gion-matsuri'],['Dusk','Fushimi Inari (optional)','Torii glow, free, 24h \u2014 fewer crowds after dark','https://inari.jp/en/']],
+  links:[['Kiyomizu-dera','https://www.kiyomizudera.or.jp/en/'],['Gion Matsuri','https://www.insidekyoto.com/gion-matsuri'],['Fushimi Inari','https://inari.jp/en/']]},
 
- {id:'d8',n:8,date:'Fri · Jul 24',where:'Kyoto',title:'Festival parade + temples',hero:'gion_matsuri.jpg',badge:['fest','★ Float parade'],
-  vibe:'Giant floats, then Kyoto\u2019s icons.',
-  body:"The Yamaboko Junko float parade rolls through downtown 9:30\u201311:50 AM \u2014 towering wooden floats, live flutes and drums. Afternoon: Kiyomizu-dera and the Sannenzaka streets, then the Arashiyama bamboo grove at golden hour.",
-  gallery:[['kiyomizu.jpg','Kiyomizu-dera'],['arashiyama.jpg','Bamboo grove'],['yasaka_pagoda.jpg','Higashiyama']],
-  stops:[['9:30 AM','Gion Matsuri parade','Yamaboko Junko, downtown','https://www.insidekyoto.com/gion-matsuri'],['1 PM','Kiyomizu-dera','Wooden stage + Sannenzaka shopping','https://www.kiyomizudera.or.jp/en/'],['4:30 PM','Arashiyama','Bamboo grove, late = fewer crowds','https://www.google.com/maps/search/Arashiyama+Bamboo+Grove']],
-  links:[['Kiyomizu-dera','https://www.kiyomizudera.or.jp/en/']]},
+ {id:'d8',n:8,date:'Fri · Jul 24',where:'Kyoto',title:'Float parade + Golden Pavilion',hero:'gion_matsuri.jpg',badge:['fest','★ Float parade'],
+  vibe:'Giant floats, then gold + bamboo.',
+  body:"The Yamaboko Junko float parade rolls through downtown 9:30\u201311:50 AM \u2014 towering wooden floats, live flutes and drums. Then head west: Kinkaku-ji, the Golden Pavilion mirrored in its pond, and the Arashiyama bamboo grove at golden hour as the crowds thin. Optional kaiseki back at the ryokan.",
+  gallery:[['kinkakuji.jpg','Kinkaku-ji'],['arashiyama.jpg','Bamboo grove'],['yasaka_pagoda.jpg','Higashiyama']],
+  stops:[['9:30 AM','Gion Matsuri parade','Yamaboko Junko, downtown','https://www.insidekyoto.com/gion-matsuri'],['1 PM','Kinkaku-ji','Golden Pavilion across the mirror pond \u00b7 quick ~45 min loop','https://www.shokoku-ji.jp/kinkakuji/'],['3 PM','Arashiyama','Bamboo grove, late = fewer crowds','https://www.google.com/maps/search/Arashiyama+Bamboo+Grove']],
+  links:[['Kinkaku-ji','https://www.shokoku-ji.jp/kinkakuji/'],['Arashiyama','https://www.google.com/maps/search/Arashiyama+Bamboo+Grove']]},
 
  {id:'d9',n:9,date:'Sat · Jul 25',where:'Kyoto → Tokyo',title:'Bullet train + shopping',hero:'shinkansen.jpg',
   vibe:'Nishiki bites, Fuji from the window, Tokyo shopping.',
